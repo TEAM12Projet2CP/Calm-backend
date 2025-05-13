@@ -42,20 +42,20 @@ model Quiz {
 }
 
 model Lecture {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   description String
-  content     String   // Changed from Bytes to String
+  content     String // Changed from Bytes to String
   link        String?
-  readBy      User[]   @relation("ReadLectures")
+  readBy      User[]  @relation("ReadLectures")
 }
 
 model Program {
-  id        Int    @id @default(autoincrement())
-  name      String
-  content   String
-  userId    Int
-  user      User   @relation("userSavedPrograms", fields: [userId], references: [id])
+  id      Int    @id @default(autoincrement())
+  name    String
+  content String
+  userId  Int
+  user    User   @relation("userSavedPrograms", fields: [userId], references: [id])
 }
 
 enum Gender {
