@@ -172,7 +172,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Nejem Eddine\\Desktop\\PRJP_new\\calmBackend\\generated\\prisma",
+      "value": "C:\\Users\\Nejem Eddine\\Desktop\\finalPRJP\\Calm-backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -183,10 +183,14 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Nejem Eddine\\Desktop\\PRJP_new\\calmBackend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Nejem Eddine\\Desktop\\finalPRJP\\Calm-backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -209,8 +213,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            Int       @id @default(autoincrement())\n  name          String\n  gender        Gender\n  lastName      String\n  username      String    @unique @db.VarChar(255)\n  email         String    @unique @db.VarChar(255)\n  password      String\n  age           Int\n  createdAt     DateTime  @default(now())\n  updatedAt     DateTime  @updatedAt\n  points        Int       @default(0)\n  pfpUrl        String?   @default(\"\")\n  university    String?\n  yearOfStudy   String?\n  achievements  String[]  @default([])\n  savedNotes    String[]  @default([])\n  readLectures  Lecture[] @relation(\"ReadLectures\")\n  solvedQuizzes Quiz[]    @relation(\"SolvedQuizzes\")\n  savedPrograms Program[] @relation(\"userSavedPrograms\")\n}\n\nmodel Quiz {\n  id          Int      @id @default(autoincrement())\n  title       String\n  description String\n  question    String\n  options     String[]\n  answers     String[]\n  level       String\n  solvedBy    User[]   @relation(\"SolvedQuizzes\")\n}\n\nmodel Lecture {\n  id          Int     @id @default(autoincrement())\n  title       String\n  description String\n  content     String // Changed from Bytes to String\n  link        String?\n  readBy      User[]  @relation(\"ReadLectures\")\n}\n\nmodel Program {\n  id      Int    @id @default(autoincrement())\n  name    String\n  content String\n  userId  Int\n  user    User   @relation(\"userSavedPrograms\", fields: [userId], references: [id])\n}\n\nenum Gender {\n  MALE\n  FEMALE\n}\n",
-  "inlineSchemaHash": "ab933d84613179e72affb6bcf70795223ffebccc8fac74e03739e2cec1813ac5",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            Int       @id @default(autoincrement())\n  name          String\n  gender        Gender\n  lastName      String\n  username      String    @unique @db.VarChar(255)\n  email         String    @unique @db.VarChar(255)\n  password      String\n  age           Int\n  createdAt     DateTime  @default(now())\n  updatedAt     DateTime  @updatedAt\n  points        Int       @default(0)\n  pfpUrl        String?   @default(\"\")\n  university    String?\n  yearOfStudy   String?\n  achievements  String[]  @default([])\n  savedNotes    String[]  @default([])\n  readLectures  Lecture[] @relation(\"ReadLectures\")\n  solvedQuizzes Quiz[]    @relation(\"SolvedQuizzes\")\n  savedPrograms Program[] @relation(\"userSavedPrograms\")\n}\n\nmodel Quiz {\n  id          Int      @id @default(autoincrement())\n  title       String\n  description String\n  question    String\n  options     String[]\n  answers     String[]\n  level       String\n  solvedBy    User[]   @relation(\"SolvedQuizzes\")\n}\n\nmodel Lecture {\n  id          Int     @id @default(autoincrement())\n  title       String\n  description String\n  content     String // Changed from Bytes to String\n  link        String?\n  readBy      User[]  @relation(\"ReadLectures\")\n}\n\nmodel Program {\n  id      Int    @id @default(autoincrement())\n  name    String\n  content String\n  userId  Int\n  user    User   @relation(\"userSavedPrograms\", fields: [userId], references: [id])\n}\n\nenum Gender {\n  MALE\n  FEMALE\n}\n",
+  "inlineSchemaHash": "2b5df7e6020790ac2738a9297f84c1f05fcc45170044fd6bb978453fa5a1aad3",
   "copyEngine": true
 }
 config.dirname = '/'
