@@ -6,7 +6,7 @@ const { login } = require("./handleLoginSignUp/UserControllers")
 const PORT = process.env.PORT || 5000
 
 const corsOptions = {
-    origin:[ "http://localhost:5173", "http://127.0.0.1:5000", "http://localhost:3000"],// here we shall add the frontend url later
+    origin:[ "http://localhost:5173", "http://127.0.0.1:5000", "http://localhost:3000", "https://calm-esi-v2.vercel.app"],// here we shall add the frontend url later
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }
